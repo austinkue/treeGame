@@ -8,7 +8,7 @@ public class TextTest : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.K))
         {
-            PermaGraphic.SetMessage(PermaGraphic.GraphicIdent.main, "testGraphic");
+            TextBlob.SetMessage("testGraphic");
         }
     }
 }
