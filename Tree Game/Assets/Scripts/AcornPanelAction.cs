@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class AcornPanelAction : MonoBehaviour
 {
-
-    public GameObject roots2,AcornPanelHead,AcornPanelLeft, rodentKO, Button1;
-
+    //this is for main scene
+    public GameObject roots2,AcornPanel, AcornPanelHead,AcornPanelLeft, AcornPanelRight, AcornPanelLegs, rodentKO, Button1;
     // Start is called before the first frame update
     void Start()
     {
