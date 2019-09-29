@@ -91,6 +91,18 @@ namespace UnityUtilities
 #endif
         }
 
+        private NetworkedCEvent GetNetEvent(CEvent e)
+        {
+            if(e is NetworkedCEvent ne)
+            {
+                if(ne.sendToServer)
+                {
+                    return ne;
+                }
+            }
+            return null;
+        }
+
 #if UNITY_EDITOR
         public static Dictionary<Enum, Dictionary<Enum, List<CEventListener>>> GetEventListeners()
         {
@@ -141,6 +153,44 @@ namespace UnityUtilities
     public abstract class CEvent
     {
 
+    }
+
+    [Serializable]
+    public abstract class NetworkedCEvent : CEvent
+    {
+        public bool sendToServer = true;
+        public readonly int networkClientNumber;
+
+        public virtual NetworkControlCode eventType { get; } = NetworkControlCode.runOnClient;
+
+        public NetworkedCEvent()
+        {
+            this.networkClientNumber = NetworkClient.ClientNumber;
+        }
+
+        public override string ToString()
+        {
+            return "sendToServer: " + (sendToServer ? "True " : "False ") + base.ToString();
+        }
+    }
+
+    [Serializable]
+    public class NetworkEventBroadcast
+    {
+        public readonly Enum channel, subchannel;
+        public readonly NetworkedCEvent e;
+
+        public NetworkEventBroadcast(Enum channel, Enum subchannel, NetworkedCEvent e)
+        {
+            this.channel = channel;
+            this.subchannel = subchannel;
+            this.e = e;
+        }
+
+        public override string ToString()
+        {
+            return "NetworkEventBroadcast(" + channel + ", " + subchannel + "," + e.ToString() + ")";
+        }
     }
 
     public interface CEventListener
