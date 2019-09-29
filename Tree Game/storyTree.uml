@@ -1,0 +1,76 @@
+@startuml
+
+class Start {
+    It is a bright and sunny day.  You are an acorn.
+    ---
+    1) Fall to the ground
+    --
+    2) Get struck by lightning
+    --
+    3) Absorb some nutrients
+
+}
+
+Start -> Fall
+
+class Fall {
+    You have fallen a long way to the ground.  (-5 HP) A squirrel approaches...
+    --
+    1) Act aggressive to scare away the squirrel
+    --
+    2) Resign yourself to your fate
+    --
+    3) Pray to your god, the Oakenfather
+}
+Start -down-> Struck
+
+class Struck {
+    Out of nowhere, a bolt of lightning strikes you (-10 HP) and lights you on fire (-10 HP).
+    --
+    1) Succumb to your injuries
+    --
+    2) What doesn't kill me only makes me stronger
+    --
+    3) Get struck by lightning again
+}
+
+class Aggressive {
+    You roll menacingly towards the squirrel.  It picks you up and eats you anyway, because you are an acorn.
+    --
+    1) Shoot the squirrel.  That'll teach him to mess with you
+    --
+    2) aaaaAAAAAHHHH NOOOOO!!!
+    --
+    3) That fool, now I am the squirrel!
+}
+
+class Gun {
+    Bang, bang!  You pull out your trusty sidearm and unload six rounds of your hot American lead straight into the squirrel's chest. 
+    But before you know, it the cops roll in.
+    --
+    1) They'll never take me alive!
+    --
+    2) Submit
+    --
+    3) Roll away
+}
+Gun -down-> Alive
+
+class Alive {
+    BAD END
+}
+
+Gun -> Submit
+class Submit {
+    You stand before Squirrel Court.  You are called to the stand to testify...
+    --
+    1) Your honor, it was self defense!
+    --
+    2) I regret nothing, and I'd kill every last on of you dirty rodents if I could!
+    --
+    3) Insanity defense
+}
+
+
+
+@enduml
